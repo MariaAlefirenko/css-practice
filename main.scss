@@ -1,1 +1,108 @@
+body, main, div, article, section {
+  margin: 0;
+  padding: 0;
+}
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+:root {
+  --columns: 2;
+}
+
+.athletes {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 200px);
+  gap: 40px 30px;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.person {
+  width: 200px;
+
+  font-family: Arial;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  text-align: center;
+
+  transition: transform 1s ease-in-out;
+
+  &__photo{
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: border-radius 1s ease-in-out;
+
+    &-image{
+      display: flex;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &-rank{
+      position: absolute;
+      top: 84px;
+      right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 32px;
+      height: 32px;
+
+      border-radius: 50%;
+      font-size: 16px;
+      background-color: white;
+      color: #8B0000;
+    }
+  }
+
+  &__name{
+    margin-top: 8px;
+    color: #2F4F4F;
+;
+  }
+
+  &__extra {
+    margin: 9px 0 16px;
+    height: 0;
+    overflow: hidden;
+
+    font-weight: 400;
+    font-size: 18px;
+  }
+
+  &__sport::after {
+  content: ", $";
+}
+
+  &:hover {
+    padding: 10px 10px 0;
+    background-color: #eee;
+    border-radius: 10px;
+    z-index: 10;
+    transform: scale(1.2);
+  }
+
+  &:hover &__photo {
+    border-radius: 60px;
+  }
+
+  &:hover &__extra {
+    height: 100%;
+  }
+}
+
+@media (min-width: 1000px) {
+  :root {
+    --columns: 4;
+  }
+}
